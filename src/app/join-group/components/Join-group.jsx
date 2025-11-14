@@ -45,7 +45,3 @@ export default function JoinGroup({ groupName }) {
     </div>
   );
 }
-//
-//
-//
-//

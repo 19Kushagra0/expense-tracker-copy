@@ -7,6 +7,3 @@ export default async function Page({ searchParams }) {
 
   return <JoinGroup groupName={groupName} />;
 }
-//
-//
-//
