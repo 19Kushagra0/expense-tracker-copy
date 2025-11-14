@@ -1,30 +1,9 @@
-import { Suspense } from "react";
-import JoinGroup from "./components/Join-group";
-import { headers } from "next/headers";
-
-export const dynamic = "force-dynamic";
-
-export async function generateMetadata({ searchParams }) {
-  const groupName = searchParams?.groupName || "Your Group";
-
-  return {
-    title: `${groupName} | Numora`,
-    openGraph: {
-      title: `${groupName} | Numora`,
-      images: [`/api/og/join-group?groupName=${encodeURIComponent(groupName)}`],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${groupName} | Numora`,
-      images: [`/api/og/join-group?groupName=${encodeURIComponent(groupName)}`],
-    },
-  };
-}
 //
-export default function Page() {
-  return (
-    <Suspense fallback={<div></div>}>
-      <JoinGroup />
-    </Suspense>
-  );
+import JoinGroup from "./components/Join-group";
+
+export default async function Page({ searchParams }) {
+  const params = await searchParams; // ⬅️ FIX
+  const groupName = params.groupName || "Your Group";
+
+  return <JoinGroup groupName={groupName} />;
 }
