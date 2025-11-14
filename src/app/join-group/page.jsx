@@ -1,3 +1,4 @@
+//
 import JoinGroup from "./components/Join-group";
 
 export default async function Page({ searchParams }) {
