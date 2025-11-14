@@ -14,7 +14,7 @@ export default function JoinGroup({ groupName }) {
       <span className="join-group-tag-line">
         Add, track, and split expenses with your friends
       </span>
-
+      {/*  */}
       <div className="join-group-line"></div>
 
       <span className="join-group-bottom-line">Simplify your debts</span>
