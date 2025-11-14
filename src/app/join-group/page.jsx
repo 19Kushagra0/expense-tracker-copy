@@ -1,11 +1,11 @@
 import { Suspense } from "react";
 import JoinGroup from "./components/Join-group";
-import { headers } from "next/headers";
 
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata({ searchParams }) {
-  const groupName = searchParams?.groupName || "Your Group";
+export async function generateMetadata(props) {
+  const sp = await props.searchParams; // 🔥 FIX
+  const groupName = sp.groupName || "Your Group";
 
   return {
     title: `${groupName} | Numora`,
@@ -20,11 +20,14 @@ export async function generateMetadata({ searchParams }) {
     },
   };
 }
-//
-export default function Page() {
+
+export default async function Page(props) {
+  const sp = await props.searchParams; // 🔥 FIX
+  const groupName = sp.groupName || "Your Group";
+
   return (
     <Suspense fallback={<div></div>}>
-      <JoinGroup />
+      <JoinGroup groupName={groupName} />
     </Suspense>
   );
 }
